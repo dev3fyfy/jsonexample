@@ -27,6 +27,7 @@ jobs:
           path: build/app/outputs/apk/release/app-release.apk
       - name: Send APK to Slack 
         uses: MeilCli/slack-upload-file@v1
+        continue-on-error: true
         with:
           slack_token: ${{ secrets.SLACK_TOKEN }}
           channels: ${{ secrets.SLACK_CHANNELS }}
