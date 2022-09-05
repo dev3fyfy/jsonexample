@@ -1,0 +1,31 @@
+name: shell command
+on : [push]
+
+jobs:
+   run-shell-command:
+     runs-on: ubuntu-latest
+     steps:
+       - name: echo a string
+         run: echo "Hello World"
+       - name: multiline script
+         run: |
+           node -v
+           npm -v  
+           echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+           echo "GITHUB_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} )" >> $GITHUB_TOKEN
+           echo $GITHUB_TOKEN
+       - name: python command
+         run: |
+           import platform
+           print
+           (platform.processor())
+         shell: python
+   run-windwos-commands:
+    runs-on: windows-latest
+    needs: ["run-shell-command"]
+    steps:
+      - name: Directory PowerShell
+        run: Get-Location 
+      - name: Directory Bash 
+        run: pwd 
+        shell: bash 
