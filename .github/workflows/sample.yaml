@@ -12,7 +12,6 @@ jobs:
 
            echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
            echo "GITHUB_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} )" >> $GITHUB_TOKEN
-           echo $GITHUB_TOKEN
            echo ${GITHUB_TOKEN}
 
       
